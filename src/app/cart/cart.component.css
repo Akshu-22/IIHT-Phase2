@@ -1,0 +1,35 @@
+img {
+    height: 50px;
+    width: 50px;
+  }
+  .tbody {
+
+    margin-top: 20px;
+    width: 53%;
+    margin-left: 270px;
+    margin-top: 30px;
+  }
+  tr,th,td{
+    border: 1px solid black;
+  }
+
+  th{
+    background-color: bisque;
+  }
+  td{
+    background-color: beige;
+  }
+
+  .header{
+    height: 40px;
+    background-color: bisque;
+    margin-top: 30px;
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+    font-weight: bolder;
+    
+  }
+
+
+  

@@ -1,0 +1,23 @@
+
+img {
+    height: 100px;
+    width: 100px;
+  }
+  .btable {
+    background-color: blanchedalmond;
+    border: 1px solid black;
+    margin-top: 50px;
+    margin-left: 250px;
+    width: 60%;
+  
+  
+  }
+  button{
+    background-color: black;
+    color: white;
+
+  }
+  tr,th,td{
+    border: 1px solid black;
+  }
+  

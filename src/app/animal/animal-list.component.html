@@ -1,0 +1,27 @@
+<html>
+  <body>
+   <h4>Enter the count:</h4> <input type="number" [(ngModel)]="animalNum"/>
+
+    
+    <table class="btable">
+      <thead *ngIf="animals.length">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">name</th>
+          <th scope="col">description</th>
+          <th scope="col">AnimalCount</th>
+          <th scope="col"><button class="btn" (click)="imageVisibility()">{{showImage ? 'Hide' : 'Show'}} Image</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let animal of  filteredAnimals;let i = index">
+          <td>{{i+1}}</td>
+          <td>{{animal.name}}</td>
+          <td>{{animal.description}}</td>
+          <td>{{animal.count}}</td>
+          <td><img *ngIf="showImage" src="{{animal.imageUrl}}" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

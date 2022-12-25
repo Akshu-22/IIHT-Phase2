@@ -1,0 +1,44 @@
+<div class="header">
+ <h6>{{pageTitle}}</h6> 
+</div>
+<div class="container">
+  <div class="list">
+     <h5>Search for product:</h5> <input type="text" (keyup)="filterData(filterValue)"  [(ngModel)]="filterValue"/>
+
+    
+        <table *ngIf="products.length"   class="tbody  ">
+
+            <thead>
+                <tr>
+                  <th scope="col">P_ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">price</th>
+                  <th scope="'col">Rating</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Button</th>
+                
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let prod of filteredProducts;let i = index">
+                  <td >{{i+1}}</td>
+                    <td >
+                     {{prod.name|uppercase}}
+                    </td>
+                    <td>{{prod.category}}</td>
+                    <td>{{prod.price|currency:'INR'}}</td>
+                    <td><app-star [rating]='prod.rating' [title]="prod.rating" (ratingClicked)="onRatingClicked($event)"></app-star></td>
+                     <td><img [src]='prod.image'[title]="prod.name"  /></td>
+                     <td><button (click)="onSelect(prod)">Add </button></td>
+                    
+                  </tr>
+              </tbody>
+            </table>
+
+  </div>
+  
+</div>
+
+

@@ -1,0 +1,39 @@
+img {
+    height: 50px;
+    width: 50px;
+  }
+  .tbody {
+
+    margin-top: 20px;
+    width: 60%;
+    margin-left: 200px;
+  }
+  tr,th,td{
+    border: 1px solid black;
+  }
+
+  h5,input{
+    margin-left: 200px;
+  }
+  th{
+    background-color: bisque;
+  }
+  td{
+    background-color: beige;
+  }
+
+  .header{
+    height: 40px;
+    background-color: bisque;
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    
+  }
+  button{
+    margin: 10px;
+  }
+  
+
+
+  

@@ -1,0 +1,44 @@
+<!-- <h1>Welcome here</h1>  --> 
+ <h2>Pipe Demo:</h2>
+<p>{{title | repeatData:5 }}</p>
+<input type="text" [(ngModel)]="num"/>
+<div [ngSwitch]="num">
+    <div *ngSwitchCase="1">one</div>
+    <div *ngSwitchCase="5">five</div>
+    <div *ngSwitchCase="10">ten</div>
+    <div *ngSwitchCase="7">seven</div>
+    <div *ngSwitchCase="2">two</div>
+    <div *ngSwitchDefault>some other values</div>
+</div>     
+ <br><br>
+<h4> ng-template Example</h4>
+<input type="text" [(ngModel)]="num"/><br>
+<ng-container [ngSwitch]='num'>
+<ng-container *ngSwitchCase="11">
+    <ng-container *ngTemplateOutlet="template11And22"></ng-container>
+</ng-container>
+
+<ng-container *ngSwitchCase="22">
+    <ng-container *ngTemplateOutlet="template11And22"></ng-container>
+</ng-container>
+
+<ng-container *ngSwitchCase="33">
+    <ng-container *ngTemplateOutlet="template33And55"></ng-container>
+</ng-container>
+
+<ng-container *ngSwitchCase="55">
+    <ng-container *ngTemplateOutlet="template33And55"></ng-container>
+</ng-container>
+
+
+<ng-template #template11And22>value is either 11 or 22 </ng-template>
+
+<ng-template #template33And55>value is either 33 or 55</ng-template>
+<ng-container *ngSwitchDefault>Default value</ng-container>
+</ng-container>
+
+
+
+
+
+

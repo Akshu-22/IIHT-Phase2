@@ -1,0 +1,32 @@
+<div class="header">
+    <h5>Shopping Cart</h5>
+</div>
+<div class="list">
+    <table *ngIf="products.length"   class="tbody  ">
+
+        <thead>
+            <tr>
+             <th scope="col">P_ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="'col">Image</th>
+              <th scope="col">Quantity</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let prod of products;let i = index">
+                <td>{{i+1}}</td>
+                  <td >
+                   {{prod.name|uppercase}}
+                  </td>
+                  <td>{{prod.price|currency:'INR'}}</td>
+                   <!--<td>{{prod.rating}}</td>-->
+                   <td><img [src]='prod.image'[title]="prod.name"  /></td>
+                   <td><input type="submit" value="+"></td>
+
+                       </tr>
+          </tbody>
+        </table>
+
+</div>
