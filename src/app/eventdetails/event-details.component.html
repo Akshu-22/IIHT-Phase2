@@ -1,0 +1,19 @@
+<div class="section">
+    <h3 class="header">List Of Events</h3>
+
+    <div *ngIf="events.length">
+        <div class="row">
+            <div *ngFor="let event of events " class="card" style="width:14rem;">
+           
+            <div class="card-body">
+                <h6>Event Name:{{event.name}}</h6>
+                <p>Event_ID:{{event.id}}</p>
+                <p>Date:{{event.date}}</p>
+                <p>Time:{{event.time}}</p>
+                <p>Price:{{event.price}}</p>
+            </div>
+            <img src="{{event.imageUrl}}">
+            </div>
+        </div>
+    </div>
+</div>

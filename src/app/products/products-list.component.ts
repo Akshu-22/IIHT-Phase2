@@ -1,4 +1,5 @@
 import { Component, OnInit,EventEmitter,Output} from '@angular/core';
+import { ProductService } from 'shared/product.service';
 import { Category, IProduct } from './product';
 
 @Component({
@@ -7,16 +8,24 @@ import { Category, IProduct } from './product';
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
+  constructor(private productservice:ProductService){};
   pageTitle:string="Product List Is: "
 filteredProducts:IProduct[]=[];
-
+products!:IProduct[];
+filterValue!:string;
 @Output() OnProductSelection:EventEmitter<IProduct>=new EventEmitter<IProduct>();
 
   ngOnInit(): void {
-    this.filteredProducts = this.products;
+    
+   this.productservice.getProducts().subscribe((prod:IProduct[])=>{
+          this.products=prod;
+          this.filteredProducts = this.products;
+
+   });
   }
-  filterValue!:string;
-   products:IProduct[]=[{
+ 
+  /* products:IProduct[]=this.productservice.getProducts();--1st type*/
+    /*{
 
     id:111,
     name:'T-shirt',
@@ -65,8 +74,8 @@ filteredProducts:IProduct[]=[];
   rating:2.7,
   image:'../../assets/images/laptop.jpg'
 
-}
-];
+}*/
+
    filterData(val:string){
     this.filteredProducts=this.products.filter((p)=>p.category===val);
   }

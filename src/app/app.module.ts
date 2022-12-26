@@ -11,6 +11,10 @@ import { CartComponent } from './cart/cart.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PenthouseComponent } from './penthouse/penthouse.component';
 import { TransformDataPipe } from './transform-data.pipe';
+import {  HttpClientModule } from "@angular/common/http";
+import { EventListComponent } from './event/event-list.component';
+import { EventDetailsComponent } from './eventdetails/event-details.component';
+
 
 @NgModule({
   declarations: [
@@ -21,12 +25,16 @@ import { TransformDataPipe } from './transform-data.pipe';
     CartComponent,
     WelcomeComponent,
     PenthouseComponent,
-    TransformDataPipe
+    TransformDataPipe,
+    EventListComponent,
+    EventDetailsComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

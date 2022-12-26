@@ -1,0 +1,52 @@
+[{
+
+    "id":111,
+    "name":"T-shirt",
+    "category":"cloths",
+    "price":200,
+   "rating":3.5,
+    "image":"../../assets/images/tshirt.jpg"
+
+   },
+  {
+
+    "id":112,
+    "name":"Puma Shoes",
+    "category":"footware",
+    "price":2000,
+    "rating":1.5,
+    "image":"../../assets/images/shoes.jpg"
+
+},
+{
+
+    "id":113,
+    "name":"Jeans",
+    "category":"cloths",
+    "price":800,
+    "rating":3.7,
+    "image":"../../assets/images/jeans.jpg"
+
+},
+{
+
+    "id":114,
+    "name":"mobile",
+    "category":"electronicDevice",
+    "price":35000,
+    "rating":4,
+    "image":"../../assets/images/mobile.jpg"
+
+},
+{
+
+    "id":115,
+    "name":"laptop",
+    "category":"electronicDevice",
+    "price":56000,
+    "rating":2.7,
+    "image":"../../assets/images/laptop.jpg"
+
+}
+    
+]
