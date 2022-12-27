@@ -3,12 +3,13 @@ import { Observable } from "rxjs";
 import {IEvent} from "src/app/event/event";
 import { HttpClient } from "@angular/common/http";
 
+
 @Injectable({
     providedIn:'root'
 })
 export class EventService{
-
-  url="api/events.json";
+/* url="api/events.json"; */
+  url="api/events";
 
 constructor(private http:HttpClient){}
 
