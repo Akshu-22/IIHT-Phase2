@@ -6,15 +6,20 @@ export interface IEvent{
     time:string;
     price:number;
     imageUrl:string;
-    location:string;
-    address:string;
-    city:string;
-    country:string;
-    sessions:string;
-    presenter:string;
-    duration:string;
-    level:string;
-    voters:string;
+    location:{
+        address:string;
+        city:string;
+        country:string;
+    },   
+    sessions:{
+        id:number;
+        name:string;
+        presenter:string;
+        duration:string;
+        level:string;
+        voters:string[];
+    }
+    
 
 
 }

@@ -14,6 +14,9 @@ import { TransformDataPipe } from './transform-data.pipe';
 import {  HttpClientModule } from "@angular/common/http";
 import { EventListComponent } from './event/event-list.component';
 import { EventDetailsComponent } from './eventdetails/event-details.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { DbService } from '../../shared/DbService';
+import { ProductAddComponent } from './products/product-add.component';
 
 
 @NgModule({
@@ -27,13 +30,15 @@ import { EventDetailsComponent } from './eventdetails/event-details.component';
     PenthouseComponent,
     TransformDataPipe,
     EventListComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    ProductAddComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(DbService)
   
   ],
   providers: [],

@@ -1,6 +1,8 @@
 import { Component, OnInit,EventEmitter,Output} from '@angular/core';
 import { ProductService } from 'shared/product.service';
 import { Category, IProduct } from './product';
+import { Router } from '@angular/router'
+
 
 @Component({
   selector: 'products-list',
@@ -8,10 +10,12 @@ import { Category, IProduct } from './product';
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-  constructor(private productservice:ProductService){};
+  
+  constructor(private productservice:ProductService,  private router:Router){};
   pageTitle:string="Product List Is: "
 filteredProducts:IProduct[]=[];
 products!:IProduct[];
+selectedProduct!:IProduct | null;
 filterValue!:string;
 @Output() OnProductSelection:EventEmitter<IProduct>=new EventEmitter<IProduct>();
 
@@ -22,7 +26,10 @@ filterValue!:string;
           this.filteredProducts = this.products;
 
    });
+   this.productservice.selectedProductChanges$.subscribe(currentProduct=>this.selectedProduct=currentProduct);
+   console.log(this.selectedProduct);
   }
+  
  
   /* products:IProduct[]=this.productservice.getProducts();--1st type*/
     /*{
@@ -87,6 +94,24 @@ filterValue!:string;
   onSelect(p:IProduct){
     this.OnProductSelection.emit(p);
    }
+  /* newProduct(){
 
+    this.productservice.changeSelectedProduct(this.productservice.newProduct());
+    console.log(this.productservice.newProduct());
+  }*/
+
+  newProduct():void{
+    console.log('in new product');
+  
+    this.productservice.changeSelectedProduct(this.productservice.newProduct());
+    console.log('back to newProduct from service ');
+  
+     this.router.navigate(['/addProduct']);
+  }
+
+   productSelected(prod:IProduct){
+    /*console.log(prod);*/
+    this.productservice.changeSelectedProduct(prod);
+   }
 
 }

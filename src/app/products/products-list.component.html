@@ -4,7 +4,7 @@
 <div class="container">
   <div class="list">
      <h5>Search for product:</h5> <input type="text" (keyup)="filterData(filterValue)"  [(ngModel)]="filterValue"/>
-
+     <button (click)="newProduct()">Add Product </button>
     
         <table *ngIf="products.length"   class="tbody  ">
 
@@ -31,6 +31,8 @@
                     <td>{{prod.price|currency:'INR'}}</td>
                     <td><app-star [rating]='prod.rating' [title]="prod.rating" (ratingClicked)="onRatingClicked($event)"></app-star></td>
                      <td><img [src]='prod.image'[title]="prod.name"  /></td>
+                    <!-- <td><button (click)="productSelected(prod)">Add </button></td>--> 
+                     
                      <td><button (click)="onSelect(prod)">Add </button></td>
                     
                   </tr>
