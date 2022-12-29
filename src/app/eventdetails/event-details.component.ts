@@ -9,6 +9,7 @@ import { IEvent } from 'src/app/event/event';
 export class EventDetailsComponent implements OnInit {
 
   @Input() events:IEvent[]=[];
+  @Input() message:string='';
 
   ngOnInit(): void {
   

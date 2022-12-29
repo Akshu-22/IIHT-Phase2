@@ -12,6 +12,7 @@ export class EventListComponent implements OnInit {
 
   constructor(private eventService:EventService){};
   events!:IEvent[];
+  message:string='';
 
 
   ngOnInit(): void {

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimalListComponent } from './animal/animal-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsListComponent } from './products/products-list.component';
 import { StarComponent } from './star/star.component';
 import { CartComponent } from './cart/cart.component';
@@ -17,6 +16,9 @@ import { EventDetailsComponent } from './eventdetails/event-details.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DbService } from '../../shared/DbService';
 import { ProductAddComponent } from './products/product-add.component';
+import { RepeatPipe } from './repeat.pipe';
+import { EmojiDirective } from './emoji.directive';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -31,13 +33,17 @@ import { ProductAddComponent } from './products/product-add.component';
     TransformDataPipe,
     EventListComponent,
     EventDetailsComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    RepeatPipe,
+    EmojiDirective
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    CommonModule,
+    ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(DbService)
   
   ],

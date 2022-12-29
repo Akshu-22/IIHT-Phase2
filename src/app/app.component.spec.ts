@@ -2,19 +2,19 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { PenthouseComponent } from './penthouse.component';
+import { AppComponent } from './app.component';
 
-describe('PenthouseComponent', () => {
-  let component: PenthouseComponent;
-  let fixture: ComponentFixture<PenthouseComponent>;
+describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PenthouseComponent ]
+      declarations: [ AppComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PenthouseComponent);
+    fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,12 +23,12 @@ describe('PenthouseComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should display msg ',()=>{
-    component.pageTitle='welcome';
+    component.name='akshata';
     fixture.detectChanges();
     const rootEle:DebugElement = fixture.debugElement;
-    const h1 =rootEle.query(By.css('#msg'));
+    const h1 =rootEle.query(By.css('#nm'));
     const h1ele:HTMLElement= h1.nativeElement;
-    expect(h1ele.textContent).toEqual('welcome to penthouse');
+    expect(h1ele.textContent).toEqual('akshata');
 
   })
 });

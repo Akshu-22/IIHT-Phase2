@@ -6,7 +6,7 @@ import { IProduct } from './products/product';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
- 
+ name:string='akshata';
 
   products:IProduct[]=[];
 

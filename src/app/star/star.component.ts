@@ -25,6 +25,8 @@ export class StarComponent implements OnInit, OnChanges {
   onClick():void{
 
     this.ratingClicked.emit(` ${this.rating} `);
+  /* let msg =  document.querySelector('#s1')?.textContent ?? 'hello there';
+    this.ratingClicked.emit(msg);*/
   }
 
 }
