@@ -1,0 +1,54 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group"  id="main">
+        <p>
+        <label for="id">Id</label>
+        <input class="form-control" type="text" name="id" id="id" formControlName="id">
+        </p>
+        <div *ngIf="id">
+        <div *ngIf="!id.valid && (id.dirty || id.touched)">
+        <div [hidden]="!id.errors?.['required']">Id is required</div>
+        </div>
+        </div>
+    
+        <p>
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name" id="name" formControlName="name">
+        </p>
+        <div *ngIf="name">
+        <div  *ngIf="!name.valid && (name.dirty || name.touched)">
+        <div [hidden]="!name.errors?.['required']">Name is required</div>
+        </div>
+        </div>
+    
+        <p>
+        <label for="issueDate">Publish Date</label>
+        <input class="form-control" type="date" name="issueDate" id="issueDate" formControlName="issueDate">
+        </p>
+        
+    
+      <div formGroupName="author">
+    
+        <p>
+        <label for="authorname">Author Name</label>
+        <input class="form-control"  type="text" name="authorname" id="authorname" formControlName="authorname">
+        </p>
+        <div *ngIf="authorname">
+        <div *ngIf="!authorname.valid && (authorname.dirty || authorname.touched)">
+        <div [hidden]="!authorname.errors?.['required']"> authorname is required </div>
+        </div>
+        </div>
+    
+        <p>
+        <label for="authoremail">Email</label>
+        <input class="form-control" type="text" name="authoremail" id="authoremail" formControlName="authoremail">
+        </p>
+        <div *ngIf="authoremail">
+        <div *ngIf="!authoremail.valid && (authoremail.dirty || authoremail.touched)">
+        <div [hidden]="!authoremail.errors?.['required']"> email is required</div>
+        </div>
+        </div>
+      </div>
+    
+       <button type="submit" [disabled]="!bookForm.valid">Submit</button>
+    </div>
+</form>

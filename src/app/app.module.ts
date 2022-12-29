@@ -19,6 +19,8 @@ import { ProductAddComponent } from './products/product-add.component';
 import { RepeatPipe } from './repeat.pipe';
 import { EmojiDirective } from './emoji.directive';
 import { CommonModule } from '@angular/common';
+import { TrusteeComponent } from './trustee/trustee.component';
+import { BookDataComponent } from './book/book-data.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { CommonModule } from '@angular/common';
     EventDetailsComponent,
     ProductAddComponent,
     RepeatPipe,
-    EmojiDirective
+    EmojiDirective,
+    TrusteeComponent,
+    BookDataComponent
   ],
   imports: [
     FormsModule,

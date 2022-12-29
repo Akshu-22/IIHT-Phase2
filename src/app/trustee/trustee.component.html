@@ -1,0 +1,60 @@
+
+<form autocomplete="false"  #truForm="ngForm" (ngSubmit)="onSubmit(truForm)">
+<div class="form-group" id="main">
+<p>
+    <label for="id">ID:</label>
+        <input class="form-control" #id="ngModel" type="number" name="id"
+         id="id" required ngModel></p>
+         <div *ngIf="!id?.valid && (id?.dirty || id?.touched)" class="error">
+        <div *ngIf="id.errors?.['required']" id="msg">ID is required</div>
+         </div>
+
+
+<p>
+    <label for="name">Name:</label>
+        <input class="form-control" #name="ngModel" type="text" name="name"
+         id="name" required minlength="5"  pattern="^[A-Za-z]+$" ngModel></p>
+         <div *ngIf="!name?.valid && (name?.dirty || name?.touched)" class="error">
+         <div *ngIf="name.errors?.['required']" id="msg"> Name is required</div>
+         <div *ngIf="name.errors?.['minlength']" id="msg">Name should be 5 char</div>
+         <div *ngIf="name.errors?.['pattern']" id="msg">Name should have alphabets
+         </div>
+         </div>
+
+         <p name="gender" >Gender:
+         <input  type="radio" id="male" name="gender" value="male" #gender="ngModel" ngModel>
+         <label for="male">Male</label>
+         <input type="radio" id="female" name="gender" value="female"  #gender="ngModel" ngModel >
+         <label for="female">Female</label><br></p>
+
+<p>
+    <label for="country">Country:</label>
+    <select (click)="changeCountry()" name="country" id="country" required #country="ngModel" ngModel  >
+    <option [ngValue]="c.id" *ngFor="let c of countries">{{c.name}}</option>
+    </select>
+
+</p>
+
+<p>
+    <label for="pass">Passport:</label>
+    <input class="form-control" #pass="ngModel" type="text" name="pass" id="pass" required minlength="8"  ngModel></p>
+    <div *ngIf="!pass?.valid && (pass?.dirty || pass?.touched)" class="error">
+    <div *ngIf="pass.errors?.['required']" id="msg">Passport is required</div>
+    <div *ngIf="pass.errors?.['minlength']" id="msg"> Passport should be 8 char</div>
+     </div>
+
+
+<p>
+    <label for="Isudate"> issuanceDate:</label>
+    <input class="form-control" #name="ngModel" type="date" name="Isudate"id="Isudate" required  ngModel></p>   
+                 
+<p>
+    <label for="dep"> noOfDependents:</label>
+    <input class="form-control" #name="ngModel" type="number" name="dep" id="dep" required  ngModel></p>  
+
+    <button type="submit" [disabled]="!truForm.valid">Submit</button>
+</div>
+</form> 
+
+
+
