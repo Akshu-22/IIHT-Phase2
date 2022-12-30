@@ -24,6 +24,7 @@ import { BookDataComponent } from './book/book-data.component';
 import { StudentAddComponent } from './student/student-add.component';
 import { HomeAddComponent } from './Home/home-add.component';
 import { AnimalDetailsComponent } from './animalDetails/animal-details.component';
+import { AnimalSuggestionsComponent } from './animal/animal-suggestions.component';
 
 
 
@@ -47,6 +48,7 @@ import { AnimalDetailsComponent } from './animalDetails/animal-details.component
     StudentAddComponent,
     HomeAddComponent,
     AnimalDetailsComponent,
+    AnimalSuggestionsComponent,
   
   ],
   imports: [

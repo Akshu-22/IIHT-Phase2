@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { BookDataComponent } from './book/book-data.component';
 import { AnimalListComponent } from './animal/animal-list.component';
 import { AnimalDetailsComponent } from './animalDetails/animal-details.component';
+import { AnimalSuggestionsComponent } from './animal/animal-suggestions.component';
 
 const routes: Routes = [
  /* {path:'events/:id',component:EventDetailsComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'welcome',component:WelcomeComponent},
   {path:'book',component:BookDataComponent},
   {path:'animal',component:AnimalListComponent,
-children:[{path:'detail/:id',component:AnimalDetailsComponent}]}
+children:[{path:'detail/:id',component:AnimalDetailsComponent},
+{path:'sugg',component:AnimalSuggestionsComponent}]}
 /*{path:'animal/:id',component:AnimalDetailsComponent}*/
  
 

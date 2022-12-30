@@ -1,6 +1,5 @@
 import { Component,OnInit} from '@angular/core';
-import { IAnimal } from './animal';
-import { Animal, AnimalDetails } from './animals';
+import { Animal, AnimalService } from './animals';
 
 @Component({
   selector: 'app-animal-list',
@@ -9,11 +8,12 @@ import { Animal, AnimalDetails } from './animals';
 })
 export class AnimalListComponent implements OnInit{
   ani:Animal[]=[]
-  constructor(private details:AnimalDetails) { }
+  constructor(private details:AnimalService) { }
   ngOnInit(): void {
    
    /* this.filteredAnimals = this.animals;*/
    this.ani=this.details.getAnimal();
+   
   }
 
 

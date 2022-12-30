@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Animal, AnimalDetails } from '../animal/animals';
+import { Animal, AnimalService } from '../animal/animals';
 
 @Component({
   selector: 'app-animal-details',
@@ -13,7 +13,7 @@ export class AnimalDetailsComponent implements OnInit {
   id:number=0;
   ani :Animal | undefined;
   sub!:Subscription
-  constructor(private activatedRoute:ActivatedRoute,private router:Router,private details:AnimalDetails) { }
+  constructor(private activatedRoute:ActivatedRoute,private router:Router,private details:AnimalService) { }
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
