@@ -23,7 +23,7 @@ describe('PenthouseComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should display msg ',()=>{
-    component.pageTitle='welcome';
+    component.pageTitle='welcome to penthouse';
     fixture.detectChanges();
     const rootEle:DebugElement = fixture.debugElement;
     const h1 =rootEle.query(By.css('#msg'));

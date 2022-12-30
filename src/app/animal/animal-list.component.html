@@ -1,4 +1,4 @@
-<html>
+<!--<html>
   <body>
    <h4>Enter the count:</h4> <input type="number" [(ngModel)]="animalNum"/>
 
@@ -24,4 +24,23 @@
       </tbody>
     </table>
   </body>
-</html>
+</html>-->
+<div class="table-responsive">
+
+  <table class="table table-striped" id="tab">
+      <thead>
+        <tr class="bg-primary" ><th>id</th>
+      <th scope="col">name</th>
+
+      </thead>
+      <tbody>
+          <tr *ngFor="let animal of ani;let index=index ;">
+           <td class="table-primary">{{animal.id}}</td>
+           <td class="table-primary"><a [routerLink]="['detail',animal.id]">{{animal.name}}</a></td>
+
+          </tr>
+      </tbody>
+
+  </table>
+</div>
+<router-outlet></router-outlet>

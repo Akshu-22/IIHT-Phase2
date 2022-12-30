@@ -1,5 +1,6 @@
 <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
     <div class="form-group"  id="main">
+    
         <p>
         <label for="id">Id</label>
         <input class="form-control" type="text" name="id" id="id" formControlName="id">
@@ -48,7 +49,34 @@
         </div>
         </div>
       </div>
-    
-       <button type="submit" [disabled]="!bookForm.valid">Submit</button>
+
+
+      <div id="publisher">Publishers:</div>
+       
+      <div formGroupName="publishers">
+      
+      <div *ngFor="let pub of publishers.controls;let i=index">
+       
+      <div [formGroupName]="i">
+      Publisher:{{i+1}}
+      
+      <input placeholder="Enter Publisher name" class="form-control"
+      type="text" name="publisherName" id="publisherName" formControlName="publisherName">
+      <br>
+      
+      <input placeholder="Enter Email" class="form-control"
+      type="email" name="publisherEmail" id="publisherEmail" formControlName="publisherEmail">
+      <br>
+      
+      <p> <button class="btn btn-danger" (click)="removePublisher(i)">Remove Publisher</button></p>
+
+      </div>
+      </div> 
+      </div>
+  
+      <p> <button  class="btn btn-primary" type="button" (click)="addPublisher()">Add Publisher</button></p>
+      <button class="btn btn-success" type="submit" [disabled]="!bookForm.valid">Submit</button>
+      <button class="btn btn-danger" type="button" (click)="reset(bookForm)">Reset</button>
     </div>
+    
 </form>

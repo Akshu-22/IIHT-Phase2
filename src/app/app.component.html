@@ -13,16 +13,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-  
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="sucess.html">Home</a></li>
+      </ul>
+      <button class="btn btn-danger navbar-btn" [routerLink]="['welcome']">Welcome</button>
+      <button class="btn btn-danger navbar-btn" [routerLink]="['penthouse']">PentHouse</button>
+      <button class="btn btn-danger navbar-btn"[routerLink]="['book']">Book</button>
+      <button class="btn btn-danger navbar-btn"[routerLink]="['animal']">AnimalList</button>
+    </div>
+  </nav>
   <!-- Assignment-1 <app-penthouse></app-penthouse>  <app-welcome></app-welcome>   -->
   
   <!-- Assignment-2 <app-animal-list></app-animal-list>   --> 
 
   <!-- Assignment-3 <products-list></products-list>-->
-  <app-book-data></app-book-data>
- <!-- <app-trustee></app-trustee> --> 
+ <!--  <app-book-data></app-book-data> -->
+ <!-- <app-trustee></app-trustee>  <app-book-data></app-book-data> <app-student-add></app-student-add>--> 
  <!--<app-welcome></app-welcome>
   <app-event-list></app-event-list> --> 
  
@@ -30,5 +43,10 @@
  
 <!--<h1 id="nm">{{name}}</h1>-->
 
+<router-outlet></router-outlet>
 </body>
 </html>
+
+
+    
+      

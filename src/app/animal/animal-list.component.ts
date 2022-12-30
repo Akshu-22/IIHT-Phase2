@@ -1,5 +1,6 @@
 import { Component,OnInit} from '@angular/core';
 import { IAnimal } from './animal';
+import { Animal, AnimalDetails } from './animals';
 
 @Component({
   selector: 'app-animal-list',
@@ -7,13 +8,16 @@ import { IAnimal } from './animal';
   styleUrls: ['./animal-list.component.css']
 })
 export class AnimalListComponent implements OnInit{
-
+  ani:Animal[]=[]
+  constructor(private details:AnimalDetails) { }
   ngOnInit(): void {
-    this.filteredAnimals = this.animals;
+   
+   /* this.filteredAnimals = this.animals;*/
+   this.ani=this.details.getAnimal();
   }
 
 
-  showImage:boolean=false;
+ /* showImage:boolean=false;
   _animalNum:number=0;
   filteredAnimals:IAnimal[]=[];
 
@@ -32,7 +36,7 @@ set animalNum(val:number){
 
 
 
-  /*animals: any[] = [*/
+  /*animals: any[] = [
   animals:IAnimal[]=[
     {
       id: 1,
@@ -69,5 +73,5 @@ set animalNum(val:number){
   
   
   }
-
+*/
 }
