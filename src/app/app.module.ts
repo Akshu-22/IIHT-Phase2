@@ -21,10 +21,10 @@ import { EmojiDirective } from './emoji.directive';
 import { CommonModule } from '@angular/common';
 import { TrusteeComponent } from './trustee/trustee.component';
 import { BookDataComponent } from './book/book-data.component';
-import { StudentAddComponent } from './student/student-add.component';
 import { HomeAddComponent } from './Home/home-add.component';
 import { AnimalDetailsComponent } from './animalDetails/animal-details.component';
 import { AnimalSuggestionsComponent } from './animal/animal-suggestions.component';
+import { LoginTestComponent } from './LoginTestCase/login-test.component';
 
 
 
@@ -45,10 +45,10 @@ import { AnimalSuggestionsComponent } from './animal/animal-suggestions.componen
     EmojiDirective,
     TrusteeComponent,
     BookDataComponent,
-    StudentAddComponent,
     HomeAddComponent,
     AnimalDetailsComponent,
     AnimalSuggestionsComponent,
+    LoginTestComponent,
   
   ],
   imports: [

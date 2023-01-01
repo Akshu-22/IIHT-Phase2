@@ -1,0 +1,23 @@
+.container{
+    border: 1px solid black;
+    width:30%;
+    padding:50px;
+    background-color: rgba(0, 0, 0, 0.498);
+    margin-top: 100px;
+}
+button{
+    width: 100%;
+}
+.head{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+label{
+    color:white;
+}
+p{
+    color: white;
+    font-size: 20px;
+}

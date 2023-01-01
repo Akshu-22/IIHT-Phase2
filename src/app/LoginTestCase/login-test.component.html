@@ -1,0 +1,27 @@
+<form class="form" action="" method="post" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="container">
+    <div class="head">User LogIn</div>
+<div>
+    
+    <label>Enter the UserEmail:</label><br>
+    <input  class="form-control"  type="text" id="email" formControlName="email"><br><br>
+   
+    <div *ngIf="email">
+        <div  *ngIf="!email.valid && (email.dirty || email.touched)">
+        <div [hidden]="!email.errors?.['required']">UserEmail is required</div>
+        </div>
+        </div>
+    
+    <label>Enter the password:</label><br>
+    <input  class="form-control"  type="password" id="pass" formControlName="pass"><br><br>
+    <div *ngIf="pass">
+        <div  *ngIf="!pass.valid && (pass.dirty || pass.touched)">
+        <div [hidden]="!pass.errors?.['required']">Password is required</div>
+        </div>
+        </div>
+
+    <button class="btn btn-success" id="btn" type="submit" [disabled]="!loginForm.valid">logIn</button>
+    <p >{{msg}}</p>
+</div>
+</div>
+</form>
