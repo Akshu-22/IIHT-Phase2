@@ -1,0 +1,21 @@
+.card{
+    margin-top: 80px;
+    width: 60%;
+    margin-left: 180px;
+}
+
+.card-header{
+    background-color: lightskyblue;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    font-weight: bolder;
+}
+
+button{
+    margin: 10px;
+}
+#main{
+    background-color: lightblue;
+    
+}

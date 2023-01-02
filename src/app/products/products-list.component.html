@@ -4,7 +4,9 @@
 <div class="container">
   <div class="list">
      <h5>Search for product:</h5> <input type="text" (keyup)="filterData(filterValue)"  [(ngModel)]="filterValue"/>
-     <button (click)="newProduct()">Add Product </button>
+     <button class="btn btn-info" [routerLink]="['addProduct']" (click)="newProduct()">Add Product </button>
+     <!--<button class="btn btn-danger">Delete Product </button>-->
+    <!-- <button  class="btn btn-warning" [routerLink]="['addProduct']">Update Product </button> --> 
     
         <table *ngIf="products.length"   class="tbody  ">
 
@@ -17,6 +19,7 @@
                   <th scope="'col">Rating</th>
                   <th scope="col">Image</th>
                   <th scope="col">Add To Cart</th>
+                  <th scope="col">Update</th>
                 
 
                 </tr>
@@ -31,9 +34,10 @@
                     <td>{{prod.price|currency:'INR'}}</td>
                     <td><app-star [rating]='prod.rating' [title]="prod.rating" (ratingClicked)="onRatingClicked($event)"></app-star></td>
                      <td><img [src]='prod.image'[title]="prod.name"  /></td>
-                    <!-- <td><button (click)="productSelected(prod)">Add </button></td>--> 
+                     <td><button class="btn btn-success" (click)="onSelect(prod)">Add </button></td>       
+                     <td><button class="btn btn-warning" [routerLink]="['addProduct']" (click)="productSelected(prod)">Edit </button></td>
                      
-                     <td><button (click)="onSelect(prod)">Add </button></td>
+                    <!--<td><button class="btn btn-success" (click)="productSelected(prod)">Add</button></td>   --> 
                     
                   </tr>
               </tbody>
@@ -42,5 +46,6 @@
   </div>
   
 </div>
+<router-outlet></router-outlet>
 
 

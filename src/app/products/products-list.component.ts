@@ -15,6 +15,7 @@ export class ProductsListComponent implements OnInit {
   pageTitle:string="Product List Is: "
 filteredProducts:IProduct[]=[];
 products!:IProduct[];
+prod!:IProduct;
 selectedProduct!:IProduct | null;
 filterValue!:string;
 @Output() OnProductSelection:EventEmitter<IProduct>=new EventEmitter<IProduct>();
@@ -106,12 +107,16 @@ filterValue!:string;
     this.productservice.changeSelectedProduct(this.productservice.newProduct());
     console.log('back to newProduct from service ');
   
-     this.router.navigate(['/addProduct']);
+    // this.router.navigate(['addProduct']);
   }
 
    productSelected(prod:IProduct){
     /*console.log(prod);*/
     this.productservice.changeSelectedProduct(prod);
    }
+   getProductById(id:number):IProduct{
+    this.productservice.getProductById(id).subscribe(resp=>this.prod=resp);
+    return this.prod;
+  }
 
 }

@@ -1,0 +1,18 @@
+#card{
+    margin-left: 270px;
+    margin-top: 30px;
+    border: 2px solid brown;
+    padding: 20px;
+    background-color:rgb(255, 255, 241);
+}
+button{
+    margin: 10px;
+}
+.head{
+    background-color: bisque;
+    height: 40px;
+}
+h2{
+    font-style: italic;
+    font-weight: bolder;
+}

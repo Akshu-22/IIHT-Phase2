@@ -1,17 +1,49 @@
-<div class="col-md-6 user-container">
-    <h2 class="text-center">Add Product</h2>
-    <form [formGroup]="addProduct" (ngSubmit)="onSubmit()">
+<div class="container">
+  <div class="head"> <h2 class="text-center">{{pageTitle}}</h2> </div>
+<div class="col-md-6 user-container" id="card">
+   
+    <form [formGroup]="addProduct" (ngSubmit)="saveProduct(products)">
       <div class="form-group">
         <label for="name">Product Name:</label>
-        <input type="text" formControlName="name" placeholder="Product name" name="name" class="form-control" id="name">
+        <input (blur)="blur()" type="text" formControlName="name"  name="name" class="form-control" id="name">
+      </div>
+
+      <div class="form-group">
+        <label for="category">
+          Category
+        </label>
+        <select  name="category" class='form-control'
+        formControlName="category">
+          <option selected value="cloths">Cloths</option>
+          <option value="footware">Footware</option>
+          <option value="electronicDevice">ElectronicDevice</option>
+        </select>
       </div>
 
       <div class="form-group">
         <label for="price">Price:</label>
-        <input type="number" formControlName="price" placeholder="price" name="price" class="form-control" id="price">
+        <input (blur)="blur()" type="number" formControlName="price"  name="price" class="form-control" id="price">
       </div>
 
-      <button class="btn btn-success">Add</button>
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <input (blur)="blur()" type="number" min="1" max="5" formControlName="rating" name="rating" class="form-control" id="rating" >
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input (blur)="blur()" type="text" formControlName="image" name="image" class="form-control" id="image">
+      </div>
+
+     <br>
+     <button [disabled]='!addProduct.valid ||!addProduct.dirty' class="btn btn-success">Save Product</button>
+     
+     <button class="btn btn-danger" type="button"(click)="deleteProduct(products)">Delete Product</button>
     </form>
   </div>
+  <div class='alert alert-danger' *ngIf="errorMessage">
+    Error : {{errorMessage}}
+  </div>
+</div>
+
 

@@ -25,6 +25,12 @@ import { HomeAddComponent } from './Home/home-add.component';
 import { AnimalDetailsComponent } from './animalDetails/animal-details.component';
 import { AnimalSuggestionsComponent } from './animal/animal-suggestions.component';
 import { LoginTestComponent } from './LoginTestCase/login-test.component';
+import { AnimalAddComponent } from './animal/animal-add.component';
+import { ShellComponent } from './Home/shell.component';
+import { MenuComponent } from './Home/menu.component';
+import { LoginComponent } from './user/login.component';
+
+
 
 
 
@@ -49,6 +55,12 @@ import { LoginTestComponent } from './LoginTestCase/login-test.component';
     AnimalDetailsComponent,
     AnimalSuggestionsComponent,
     LoginTestComponent,
+    AnimalAddComponent,
+    ShellComponent,
+    MenuComponent,
+    LoginComponent,
+  
+   
   
   ],
   imports: [
