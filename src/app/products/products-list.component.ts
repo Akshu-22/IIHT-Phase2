@@ -1,5 +1,5 @@
 import { Component, OnInit,EventEmitter,Output} from '@angular/core';
-import { ProductService } from 'shared/product.service';
+import { ProductService } from 'src/app/shared/product.service';
 import { Category, IProduct } from './product';
 import { Router } from '@angular/router'
 

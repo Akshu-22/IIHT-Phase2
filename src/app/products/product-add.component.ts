@@ -2,9 +2,9 @@ import { Component,OnInit,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ProductService } from 'shared/product.service';
+import { ProductService } from 'src/app/shared/product.service';
 import { Category, IProduct } from './product';
-import { GenericValidator } from 'shared/genericvalidator';
+import { GenericValidator } from 'src/app/shared/genericvalidator';
 
 @Component({
   selector: 'app-product-add',

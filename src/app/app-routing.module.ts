@@ -14,6 +14,8 @@ import { ProductsListComponent } from './products/products-list.component';
 import { AuthGuard } from './user/auth-guard.service';
 import { ShellComponent } from './Home/shell.component';
 import { LoginComponent } from './user/login.component';
+import { FoodListComponent } from './food/food-list.component';
+import { FoodAddComponent } from './food/food-add.component';
 
 
 /*const routes: Routes = [
@@ -47,7 +49,22 @@ const routes:Routes=[
   children:[{path:'addProduct',component:ProductAddComponent}]
 },
 {path:'',redirectTo:'welcome',pathMatch:'full'},
-{path:'login',component:LoginComponent}
+{path:'login',component:LoginComponent},
+
+{
+  path:'food',
+  component:FoodListComponent,
+  canActivate:[AuthGuard],
+  children:[{path:'addFood',component:FoodAddComponent}]
+},
+{path:'',redirectTo:'welcome',pathMatch:'full'},
+{path:'login',component:LoginComponent},
+
+
+{path:'animal',component:AnimalListComponent,
+children:[{path:'detail/:id',component:AnimalDetailsComponent},
+{path:'sugg',component:AnimalSuggestionsComponent}]},
+{path:'animal/:id',component:AnimalDetailsComponent},
 
 ]}
 

@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <div class="container">
+     <div class="list">
+        <h5>Search for Food items:</h5> <input type="text" (keyup)="filterData(filterValue)"  [(ngModel)]="filterValue" />
+        <button class="btn btn-info" [routerLink]="['addFood']" (click)="newFood()">Add New Food </button>
+        <!--<button class="btn btn-danger">Delete Product </button>-->
+       <!-- <button  class="btn btn-warning" [routerLink]="['addProduct']">Update Product </button> --> 
+       
+           <table *ngIf="foods.length"  class="tbody  ">
+   
+               <thead>
+                   <tr>
+                     <th scope="col">Food-ID</th>
+                     <th scope="col">Name</th>
+                     <th scope="col">Category</th>
+                     <th scope="col">price</th>
+                     <th scope="col">Image</th>
+                     <th scope="col">Update</th>
+                     <th scope="col">Delete</th>  
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr  *ngFor="let f1 of filteredFood;let i = index">
+                     <td >{{i+1}}</td>
+                       <td >
+                        {{f1.name|uppercase}}
+                       </td>
+                       <td>{{f1.category}}</td>
+                       <td>{{f1.price|currency:'INR'}}</td>
+                        <td><img [src]='f1.image'[title]="f1.name"  /></td>       
+                        <td><button id="btn" class="btn btn-default btn-sm" [routerLink]="['addFood']" (click)="foodSelected(f1)" ><span class="glyphicon glyphicon-edit"></span> </button></td>
+                        <td><button id="btn" class="btn btn-default btn-sm"(click)="deleteFood(f1)" > <span class="glyphicon glyphicon-trash"></span> </button></td>
+                                             
+                     </tr>
+                 </tbody>
+               </table>
+   
+     </div>
+     
+   </div>
+ <router-outlet></router-outlet> 
+   
+   
+   

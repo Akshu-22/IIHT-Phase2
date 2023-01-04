@@ -8,7 +8,7 @@ import { AuthService } from '../user/auth.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  pageTitle:string='Online Shopping';
+  pageTitle:string='Online Food Order';
   
   get isLoggedIn():boolean{
     return this.authservice.isLoggedIn();
@@ -32,5 +32,35 @@ export class MenuComponent implements OnInit {
       this.authservice.logOut();
       this.router.navigate(['/welcome']);
     }
+  }
+    /*ngOnDestroy(): void {
+      console.log('menu destroyed');}
+  
+  
+      ngOnChanges():void{
+       console.log('menu component changes');
+      }
+  
+      ngDoCheck(){
+        console.log('doCheck of menu');
+      }
+  
+      ngAfterContentInit(){
+  
+        console.log('menu content init');
+  
+      }
+      ngAfterContentChecked(){
+        console.log('menu content checked');
+      }
+      ngAfterViewInit(){
+        console.log('menu view init');
+  
+      }
+  
+     ngAfterViewChecked(){
+      console.log('menu view checked');
+  
+     }*/
 
-}
+

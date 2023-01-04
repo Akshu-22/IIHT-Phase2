@@ -3,7 +3,7 @@
     
         <p>
         <label for="id">Id</label>
-        <input class="form-control" type="text" name="id" id="id" formControlName="id">
+        <input class="form-control" type="number" name="id" id="id" formControlName="id">
         </p>
         <div *ngIf="id">
         <div *ngIf="!id.valid && (id.dirty || id.touched)">
@@ -41,7 +41,7 @@
     
         <p>
         <label for="authoremail">Email</label>
-        <input class="form-control" type="text" name="authoremail" id="authoremail" formControlName="authoremail">
+        <input class="form-control" type="email" name="authoremail" id="authoremail" formControlName="authoremail">
         </p>
         <div *ngIf="authoremail">
         <div *ngIf="!authoremail.valid && (authoremail.dirty || authoremail.touched)">

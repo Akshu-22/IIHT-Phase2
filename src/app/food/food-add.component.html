@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="head"> <h2 class="text-center">{{pageTitle}}</h2> </div>
+  <div class="col-md-6 user-container" id="card">
+     
+      <form [formGroup]="addFood" (ngSubmit)="saveFood(foods)">
+        <div class="form-group">
+          <label for="name">Food Name:</label>
+          <input (blur)="blur()" type="text" formControlName="name"  name="name" class="form-control" id="name">
+        </div>
+  
+        <div class="form-group">
+          <label for="category">
+            Category
+          </label>
+          <select  name="category" class='form-control'
+          formControlName="category">
+            <option selected value="indian">Indian</option>
+            <option value="chinese">Chinese</option>
+            <option value="thai">Thai</option>
+            <option value="korean">Korean</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input (blur)="blur()" type="number" formControlName="price"  name="price" class="form-control" id="price">
+        </div>
+  
+        <div class="form-group">
+          <label for="image">Image:</label>
+          <input (blur)="blur()" type="text" formControlName="image" name="image" class="form-control" id="image">
+        </div>
+  
+       <br>
+       <button [disabled]='!addFood.valid ||!addFood.dirty'  class="btn btn-success">Add Changes</button>
+       
+       <!--<button class="btn btn-danger" type="button"(click)="deleteFood(foods)">Delete Product</button>-->
+      </form>
+    </div>
+    <div class='alert alert-danger' *ngIf="errorMessage">
+      Error : {{errorMessage}}
+    </div>
+  </div>
+  
+  
+  
