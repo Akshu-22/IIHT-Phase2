@@ -12,11 +12,10 @@
         <label for="category">
           Category
         </label>
-        <select  name="category" class='form-control'
-        formControlName="category">
+        <select  name="category" class='form-control' formControlName="category" id="sel">
           <option selected value="cloths">Cloths</option>
           <option value="footware">Footware</option>
-          <option value="electronicDevice">ElectronicDevice</option>
+          <option value="electronicDevice">electronicDevice</option>
         </select>
       </div>
 
@@ -36,9 +35,9 @@
       </div>
 
      <br>
-     <button [disabled]='!addProduct.valid ||!addProduct.dirty' class="btn btn-success">Save Product</button>
+     <button id="btn" [disabled]='!addProduct.valid ||!addProduct.dirty' class="btn btn-success">Save Product</button>
      
-     <button class="btn btn-danger" type="button"(click)="deleteProduct(products)">Delete Product</button>
+     <button  class="btn btn-danger" type="button"(click)="deleteProduct(products)">Delete Product</button>
     </form>
   </div>
   <div class='alert alert-danger' *ngIf="errorMessage">
