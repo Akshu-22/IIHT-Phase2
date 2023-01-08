@@ -3,12 +3,13 @@
 </div>
 <div class="container">
   <div class="list">
-     <h5>Search for product:</h5> <input type="text" (keyup)="filterData(filterValue)"  [(ngModel)]="filterValue"/>
-     <button class="btn btn-info" [routerLink]="['addProduct']" (click)="newProduct()">Add Product </button>
+      <h5>Search for product:</h5>
+        <input type="text" (keyup)="filterData(filterValue)"  [(ngModel)]="filterValue"/>
+     <button class="btn btn-info" [routerLink]="['addProduct']" (click)="newProduct()">Add Product </button> 
      <!--<button class="btn btn-danger">Delete Product </button>-->
     <!-- <button  class="btn btn-warning" [routerLink]="['addProduct']">Update Product </button> --> 
     
-        <table *ngIf="products.length"   class="tbody  ">
+        <table *ngIf="filteredProducts.length"  class="tbody  "><!-- *ngIf="filteredProducts.length"  --> 
 
             <thead>
                 <tr>
@@ -25,7 +26,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr  *ngFor="let prod of filteredProducts;let i = index">
+                <!-- <trproducts$ | async  *ngFor="let prod of filteredProducts;let i = index"> -->
+                  <tr  *ngFor="let prod of filteredProducts;let i = index">
                   <td >{{i+1}}</td>
                     <td >
                      {{prod.name|uppercase}}

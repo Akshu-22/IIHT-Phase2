@@ -2,7 +2,7 @@
   <div class="head"> <h2 class="text-center">{{pageTitle}}</h2> </div>
 <div class="col-md-6 user-container" id="card">
    
-    <form [formGroup]="addProduct" (ngSubmit)="saveProduct(products)">
+    <form [formGroup]="addProduct" (ngSubmit)="saveProduct(product)">
       <div class="form-group">
         <label for="name">Product Name:</label>
         <input (blur)="blur()" type="text" formControlName="name"  name="name" class="form-control" id="name">
@@ -37,7 +37,7 @@
      <br>
      <button id="btn" [disabled]='!addProduct.valid ||!addProduct.dirty' class="btn btn-success">Save Product</button>
      
-     <button  class="btn btn-danger" type="button"(click)="deleteProduct(products)">Delete Product</button>
+   <button  class="btn btn-danger" type="button"(click)="deleteProduct(product)">Delete Product</button> 
     </form>
   </div>
   <div class='alert alert-danger' *ngIf="errorMessage">

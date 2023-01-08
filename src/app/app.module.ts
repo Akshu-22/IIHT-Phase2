@@ -14,7 +14,7 @@ import {  HttpClientModule } from "@angular/common/http";
 import { EventListComponent } from './event/event-list.component';
 import { EventDetailsComponent } from './eventdetails/event-details.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { DbService } from '../../shared/DbService';
+import { DbService } from './shared/DbService';
 import { ProductAddComponent } from './products/product-add.component';
 import { RepeatPipe } from './repeat.pipe';
 import { EmojiDirective } from './emoji.directive';
@@ -29,6 +29,15 @@ import { AnimalAddComponent } from './animal/animal-add.component';
 import { ShellComponent } from './Home/shell.component';
 import { MenuComponent } from './Home/menu.component';
 import { LoginComponent } from './user/login.component';
+import { FoodListComponent } from './food/food-list.component';
+import { FoodAddComponent } from './food/food-add.component';
+import { CardComponent } from './card/card.component';
+import { CardListComponent } from './card/cardlist.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppEffects } from './app.effects';
+
 
 
 
@@ -38,15 +47,15 @@ import { LoginComponent } from './user/login.component';
   declarations: [
     AppComponent,
     AnimalListComponent,
-    ProductsListComponent,
-    StarComponent,
+   // ProductsListComponent,
+  // StarComponent,
     CartComponent,
     WelcomeComponent,
     PenthouseComponent,
     TransformDataPipe,
     EventListComponent,
     EventDetailsComponent,
-    ProductAddComponent,
+    //ProductAddComponent,
     RepeatPipe,
     EmojiDirective,
     TrusteeComponent,
@@ -59,6 +68,11 @@ import { LoginComponent } from './user/login.component';
     ShellComponent,
     MenuComponent,
     LoginComponent,
+   // FoodListComponent,
+  //  FoodAddComponent,
+    CardComponent,
+    CardListComponent,
+  
   
    
   
@@ -70,6 +84,10 @@ import { LoginComponent } from './user/login.component';
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({}),
+  
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument(),
     HttpClientInMemoryWebApiModule.forRoot(DbService)
   
   ],

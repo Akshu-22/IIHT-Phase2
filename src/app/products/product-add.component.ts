@@ -1,10 +1,14 @@
 import { Component,OnInit,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription ,tap} from 'rxjs';
 import { ProductService } from 'src/app/shared/product.service';
 import { Category, IProduct } from './product';
 import { GenericValidator } from 'src/app/shared/genericvalidator';
+import { State } from '../state/product/product.state';
+import { Store } from '@ngrx/store';
+import { getCurrentProduct } from '../state/product/product.selectors';
+import * as ProductActions  from '../state/product/product.actions';
 
 @Component({
   selector: 'app-product-add',
@@ -14,15 +18,19 @@ import { GenericValidator } from 'src/app/shared/genericvalidator';
 export class ProductAddComponent  implements OnInit,OnDestroy{
   pageTitle='Edit Product';
   errorMessage='';
-  products!:IProduct | null;
+  //products!:IProduct | null;
+ //products:IProduct[]=[];
+ product!:IProduct | null | undefined;
   sub!:Subscription;
   addProduct!: FormGroup;
   displayMessage: {[key:string]:string}={};
-    private validationMessages!:{[key:string]:{[key:string]:string}};
+  product$!: Observable<IProduct | null | undefined  >;
 
-    private genericValidator!:GenericValidator;
+  private validationMessages!:{[key:string]:{[key:string]:string}};
+
+  private genericValidator!:GenericValidator;
     
-  constructor(private formBuilder: FormBuilder,private router: Router, private productservice:ProductService ) { 
+  constructor(private store:Store<State>,private formBuilder: FormBuilder,private router: Router, private productservice:ProductService ) { 
 
   this.validationMessages={
 
@@ -61,7 +69,23 @@ ngOnDestroy(): void {
       rating:['',[Validators.required]]
 
     });
-    this.sub=this.productservice.selectedProductChanges$.subscribe(selProd=>this.displayProduct(selProd));
+    //
+    console.log('created add form ')
+        this.product$ = this.store.select(getCurrentProduct)
+          .pipe(
+            tap(currentProduct => this.displayProduct(currentProduct))
+          );
+    this.product$.subscribe(resp=>this.product=resp);
+    console.log('selected current product in ng onit add product ',this.product);
+        this.addProduct.valueChanges.subscribe(
+          () => this.displayMessage =
+          this.genericValidator.processMessages(this.addProduct)
+        );
+    console.log('value in form changes')
+   //
+   
+   
+   // this.sub=this.productservice.selectedProductChanges$.subscribe(selProd=>this.displayProduct(selProd));
 
 
     this.addProduct.valueChanges.
@@ -96,29 +120,31 @@ ngOnDestroy(): void {
       });
   }*/
 
-  displayProduct(productParam:IProduct |null):void{
+  //displayProduct(productParam:IProduct |null):void{
 
-    this.products = productParam;
-    if(this.products){
+    displayProduct(productParam:IProduct |null |undefined):void{
+
+    this.product = productParam;
+    if(this.product){
  
      this.addProduct.reset();
  
-     if(this.products.id==0){
+     if(this.product.id==0){
        this.pageTitle='Add Product';
      }
      else{
  
-       this.pageTitle=`Edit Product: ${this.products.name}`;
+       this.pageTitle=`Edit Product: ${this.product.name}`;
  
      }
   
   this.addProduct.patchValue({
-   id:this.products.id,
-    name:this.products.name,
-    image:this.products.image,
-    rating:this.products.rating,
-    price:this.products.price,
-    category:this.products.category
+   id:this.product.id,
+    name:this.product.name,
+    image:this.product.image,
+    rating:this.product.rating,
+    price:this.product.price,
+    category:this.product.category
  
  
   })
@@ -128,27 +154,28 @@ ngOnDestroy(): void {
  
    }
  
-   saveProduct(originalProduct:IProduct | null):void{
+   saveProduct(originalProduct:IProduct | null |undefined):void{
  
      if(this.addProduct.valid){
        if(this.addProduct.dirty){
-         const products={...originalProduct,...this.addProduct.value};
+         const product={...originalProduct,...this.addProduct.value};
  
-       if(products.id==0){
-         this.productservice.createProduct(products).subscribe(
+       if(product.id==0){
+        this.store.dispatch(ProductActions.createProduct({product}));
+       /*  this.productservice.createProduct(products).subscribe(
            (resp)=>{
              this.productservice.changeSelectedProduct(resp);
              console.log(resp);},
  
            (err)=>this.errorMessage=err
-         );
+         );*/
  
       }
-      else{
+      else{this.store.dispatch(ProductActions.updateProduct({ product}));
  
-       this.productservice.updateProduct(products).subscribe(
+      /* this.productservice.updateProduct(products).subscribe(
         resp=>this.productservice.changeSelectedProduct(resp),
-        err=>this.errorMessage=err      );
+        err=>this.errorMessage=err      );*/
  
       }
        }
@@ -163,19 +190,22 @@ ngOnDestroy(): void {
  
    }
  
-   deleteProduct(prod:IProduct |null):void{
+   deleteProduct(prod:IProduct |null |undefined):void{
      if(prod && prod.id){
  
        if(confirm(`Are you sure you want to delete ${prod.name} details`)){
+        this.store.dispatch(ProductActions.deleteProduct({ productId: prod.id }));
  
-         this.productservice.deleteProduct(prod.id).subscribe(
-           resp=>this.productservice.changeSelectedProduct(null),
-           err=>this.errorMessage=err
-         );
+        // this.productservice.deleteProduct(prod.id).subscribe(
+         //  resp=>this.productservice.changeSelectedProduct(null),
+          // err=>this.errorMessage=err
+        // );
        }
        else{
+
+        this.store.dispatch(ProductActions.clearCurrentProduct());
          
-         this.productservice.changeSelectedProduct(null)
+        // this.productservice.changeSelectedProduct(null)
        }
       this.router.navigate(['products'])
      }

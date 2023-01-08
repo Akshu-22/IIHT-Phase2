@@ -42,21 +42,21 @@ const routes:Routes=[
   {path:'',component:ShellComponent,
   children:[{path:'welcome',component:WelcomeComponent},
 
-{
+ /* {
   path:'products',
   component:ProductsListComponent,
   canActivate:[AuthGuard],
   children:[{path:'addProduct',component:ProductAddComponent}]
-},
+},  */
 {path:'',redirectTo:'welcome',pathMatch:'full'},
 {path:'login',component:LoginComponent},
 
-{
+/*{
   path:'food',
   component:FoodListComponent,
   canActivate:[AuthGuard],
   children:[{path:'addFood',component:FoodAddComponent}]
-},
+},*/
 {path:'',redirectTo:'welcome',pathMatch:'full'},
 {path:'login',component:LoginComponent},
 
@@ -66,6 +66,26 @@ children:[{path:'detail/:id',component:AnimalDetailsComponent},
 {path:'sugg',component:AnimalSuggestionsComponent}]},
 {path:'animal/:id',component:AnimalDetailsComponent},
 
+{
+  path:'todo',
+  loadChildren:()=>import('./todo/todo.module').then((m)=>m.TodoModule),
+  },
+
+  {
+    path:'food',
+    component:FoodListComponent,
+    canActivate:[AuthGuard],
+    loadChildren:()=>import('./foods/foods.module').then((m)=>m.FoodsModule),
+  }, 
+
+  {
+    path:'products',
+    component:ProductsListComponent,
+    canActivate:[AuthGuard],
+    loadChildren:()=>import('./product/product.module').then((m)=>m.ProductModule),
+  }, 
+
+  
 ]}
 
 
