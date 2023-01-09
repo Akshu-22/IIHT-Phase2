@@ -4,11 +4,11 @@
    <div class="container">
      <div class="list">
         <h5>Search for Food items:</h5> <input type="text" (keyup)="filterData(filterValue)"  [(ngModel)]="filterValue" />
-        <button class="btn btn-info" [routerLink]="['addFood']" (click)="newFood()">Add New Food </button>
+        <button class="btn btn-info"  (click)="newFood()">Add New Food </button>
         <!--<button class="btn btn-danger">Delete Product </button>-->
        <!-- <button  class="btn btn-warning" [routerLink]="['addProduct']">Update Product </button> --> 
        
-           <table *ngIf="foods.length"  class="tbody  ">
+           <table *ngIf="filteredFood.length"  class="tbody  ">
    
                <thead>
                    <tr>
@@ -22,7 +22,8 @@
                    </tr>
                  </thead>
                  <tbody>
-                   <tr  *ngFor="let f1 of filteredFood;let i = index">
+                    <tr  *ngFor="let f1 of filteredFood;let i = index">
+                    
                      <td >{{i+1}}</td>
                        <td >
                         {{f1.name|uppercase}}

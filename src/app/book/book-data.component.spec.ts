@@ -50,6 +50,10 @@ describe('BookDataComponent', () => {
     const e1 =fixture.debugElement.query(By.css('#name'));
     expect(e1.nativeElement.getAttribute('type')).toEqual('text');
   });
+  it('should have name for book name', () => {
+    const e1 =fixture.debugElement.query(By.css('#name'));
+    expect(e1.nativeElement.getAttribute('name')).toEqual('name');
+  });
   it('should check book name is entered', () => {
 
     let book=component.bookForm.controls['name'];
@@ -96,14 +100,39 @@ describe('BookDataComponent', () => {
   });
   it('should check author email is entered', () => {
 
-    let book=component.bookForm.controls['authoremail'];
-    book.setValue('James@gmail.com');
-    expect(book.errors).toBeNull();
+    const mail=component.bookForm.get('author')?.get('authoremail');
+    mail?.setValue('james@gmail.com');
+    fixture.detectChanges();
+    expect(mail?.errors).toBeNull();
     
+  });
+  it('should check publisher email', () => {
+    const publisher=component.bookForm.get('publishers');
+    const pmail=component.bookForm.get('publishers')?.get('publisherEmail');
+    pmail?.setValue('james@gmail.com');
+    fixture.detectChanges();
+    expect(pmail?.errors).toBeNull();
+  });
+  it('should check publisher name', () => {
+    const e1 =fixture.debugElement.query(By.css('#publisherName'));
+    expect(e1).toBeTruthy();
+  });
+  it('should have type email for publisher name', () => {
+    const e1 =fixture.debugElement.query(By.css('#publisherName'));
+    expect(e1.nativeElement.getAttribute('type')).toEqual('text');
   });
   it('should check publisher email', () => {
     const e1 =fixture.debugElement.query(By.css('#publisherEmail'));
     expect(e1).toBeTruthy();
   });
-  
+  it('should have type email for publisher email', () => {
+    const e1 =fixture.debugElement.query(By.css('#publisherEmail'));
+    expect(e1.nativeElement.getAttribute('type')).toEqual('email');
+  });
+  it('should check submit button disabled', () => {
+    fixture.detectChanges();
+    let btn=fixture.debugElement.query(By.css('#btn')).nativeElement ;
+    expect(btn.disabled).toBe(true );
+   })
+
 });

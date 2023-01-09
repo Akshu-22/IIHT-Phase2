@@ -27,23 +27,23 @@ export const foodReducer = createReducer<FoodState>(
     on(FoodActions.loadFoodsSuccess, (state, action): FoodState => {
       return {
         ...state,
-        foods: action.food,
+        food: action.food,
         error: ''
       };
     }),
     on(FoodActions.loadFoodsFailure, (state, action): FoodState => {
       return {
         ...state,
-        foods: [],
+        food: [],
         error: action.error
       };
     }),
     on(FoodActions.updateFoodSuccess, (state, action): FoodState => {
-      const updatedFoods = state.foods.map(
+      const updatedFoods = state.food.map(
         item => action.food.id === item.id ? action.food : item);
       return {
         ...state,
-        foods: updatedFoods,
+        food: updatedFoods,
         currentFoodId: action.food.id,
         error: ''
       };
@@ -58,7 +58,7 @@ export const foodReducer = createReducer<FoodState>(
     on(FoodActions.createFoodSuccess, (state, action): FoodState => {
       return {
         ...state,
-        foods: [...state.foods, action.food],
+        food: [...state.food, action.food],
         currentFoodId: action.food.id,
         error: ''
       };
@@ -73,7 +73,7 @@ export const foodReducer = createReducer<FoodState>(
     on(FoodActions.deleteFoodSuccess, (state, action): FoodState => {
       return {
         ...state,
-        foods: state.foods.filter(food => food.id !== action.foodId),
+        food: state.food.filter(food => food.id !== action.foodId),
         currentFoodId: null,
         error: ''
       };

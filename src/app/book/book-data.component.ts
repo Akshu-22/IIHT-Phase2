@@ -21,7 +21,7 @@ export class BookDataComponent implements OnInit {
          author:this.formBuilder.group({
 
           authorname:['James',[Validators.required]],
-          authoremail:['james@gmail.com',[Validators.required,Validators.email]]
+          authoremail:['',[Validators.required,Validators.email]]
         
          }),
          publishers:this.formBuilder.array([])
@@ -74,5 +74,5 @@ export class BookDataComponent implements OnInit {
   onSubmit(){
     console.log(this.bookForm.value);
   }
-
+  
 }

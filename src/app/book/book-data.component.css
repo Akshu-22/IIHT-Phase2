@@ -1,8 +1,21 @@
+
+
 #main{
-    width: 60%;
+/* width: 60%;*/
     border: 2px solid brown;
-    margin-left: 200px;
+   /*  margin-left: 200px; */
     padding: 20px;
     margin-top: 40px;
     background-color: beige;
 }
+.full-width{
+    width: 100%;
+}
+
+.top-padding{
+    padding-top: 3px;
+}
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

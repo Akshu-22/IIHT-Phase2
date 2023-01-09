@@ -56,7 +56,7 @@ export class ProductAddComponent  implements OnInit,OnDestroy{
 
  }
 ngOnDestroy(): void {
-  this.sub.unsubscribe();
+  //this.sub.unsubscribe();
 }
 
   ngOnInit() {
@@ -75,12 +75,11 @@ ngOnDestroy(): void {
           .pipe(
             tap(currentProduct => this.displayProduct(currentProduct))
           );
+
     this.product$.subscribe(resp=>this.product=resp);
     console.log('selected current product in ng onit add product ',this.product);
-        this.addProduct.valueChanges.subscribe(
-          () => this.displayMessage =
-          this.genericValidator.processMessages(this.addProduct)
-        );
+
+      this.addProduct.valueChanges.subscribe(() => this.displayMessage =this.genericValidator.processMessages(this.addProduct) );
     console.log('value in form changes')
    //
    
@@ -145,11 +144,7 @@ ngOnDestroy(): void {
     rating:this.product.rating,
     price:this.product.price,
     category:this.product.category
- 
- 
-  })
- 
- 
+  }) 
     }
  
    }
@@ -171,18 +166,18 @@ ngOnDestroy(): void {
          );*/
  
       }
-      else{this.store.dispatch(ProductActions.updateProduct({ product}));
- 
+      else{
       /* this.productservice.updateProduct(products).subscribe(
         resp=>this.productservice.changeSelectedProduct(resp),
         err=>this.errorMessage=err      );*/
+        this.store.dispatch(ProductActions.updateProduct({ product}));
  
       }
        }
-       this.router.navigate(['products'])
+      
        
      }
-    
+     this.router.navigate(['products'])
    }
  
    blur():void{
@@ -194,7 +189,8 @@ ngOnDestroy(): void {
      if(prod && prod.id){
  
        if(confirm(`Are you sure you want to delete ${prod.name} details`)){
-        this.store.dispatch(ProductActions.deleteProduct({ productId: prod.id }));
+       // this.store.dispatch(ProductActions.deleteProduct({ productId: prod.id }));
+        this.store.dispatch(ProductActions.deleteProduct({ productId: prod.id }));  //using ngrx
  
         // this.productservice.deleteProduct(prod.id).subscribe(
          //  resp=>this.productservice.changeSelectedProduct(null),
@@ -203,13 +199,14 @@ ngOnDestroy(): void {
        }
        else{
 
-        this.store.dispatch(ProductActions.clearCurrentProduct());
+       // this.store.dispatch(ProductActions.clearCurrentProduct());
+        this.store.dispatch(ProductActions.clearCurrentProduct()); //using ngrx
          
         // this.productservice.changeSelectedProduct(null)
        }
-      this.router.navigate(['products'])
+      
      }
-    
+     this.router.navigate(['products'])
    }
 
 }

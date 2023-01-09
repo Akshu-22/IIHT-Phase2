@@ -25,14 +25,14 @@ export const getCurrentFood = createSelector(
   
       };
     } else {
-      return currentFoodId ? state.foods.find(p => p.id === currentFoodId) : null;
+      return currentFoodId ? state.food.find(p => p.id === currentFoodId) : null;
     }
   }
 );
 
-export const getProducts = createSelector(
+export const getFood = createSelector(
   getFoodFeatureState,
-  state => state.foods
+  state => state.food
 );
 
 export const getError = createSelector(

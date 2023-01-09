@@ -1,10 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription,tap } from 'rxjs';
 import { FoodService } from 'src/app/shared/food.service';
 import { GenericValidator } from 'src/app/shared/genericvalidator';
+import { State } from '../state/food/food.state';
 import { Categ, IFood } from './food';
+import * as FoodActions  from '../state/food/food.actions';
+import { getCurrentFood } from '../state/food/food.selectors';
 
 @Component({
   selector: 'app-food-add',
@@ -14,15 +18,17 @@ import { Categ, IFood } from './food';
 export class FoodAddComponent implements OnInit,OnDestroy {
   pageTitle='Edit Product';
   errorMessage='';
-  foods!:IFood | null;
+ // foods!:IFood | null;
+ foods!:IFood | null | undefined;
   sub!:Subscription;
   addFood!: FormGroup;
   displayMessage: {[key:string]:string}={};
+  food$!: Observable<IFood | null | undefined  >;
     private validationMessages!:{[key:string]:{[key:string]:string}};
 
     private genericValidator!:GenericValidator;
     
-  constructor(private formBuilder: FormBuilder,private router: Router, private foodservice:FoodService ) { 
+  constructor(private store:Store<State>,private formBuilder: FormBuilder,private router: Router, private foodservice:FoodService ) { 
 
   this.validationMessages={
 
@@ -47,7 +53,7 @@ export class FoodAddComponent implements OnInit,OnDestroy {
 
  }
 ngOnDestroy(): void {
-  this.sub.unsubscribe();
+ //this.sub.unsubscribe();
 }
 
   ngOnInit() {
@@ -58,7 +64,21 @@ ngOnDestroy(): void {
       price:['',[Validators.required]],
       image:['',[Validators.required]]  
     });
-    this.sub=this.foodservice.selectedFoodChanges$.subscribe(selFod=>this.displayProduct(selFod));
+    //this.sub=this.foodservice.selectedFoodChanges$.subscribe(selFod=>this.displayProduct(selFod));
+    this.food$ = this.store.select(getCurrentFood)
+ .pipe(
+  tap(currentFood => this.displayProduct(currentFood))
+);
+this.food$.subscribe(resp=>this.foods=resp);
+console.log('selected current food in ng onit add food ',this.foods);
+
+this.addFood.valueChanges.subscribe(
+  () => this.displayMessage =
+  this.genericValidator.processMessages(this.addFood)
+  );
+  console.log('value in form changes')
+  
+
     this.addFood.valueChanges.
     subscribe(()=>this.displayMessage=this.genericValidator.processMessages(this.addFood))
 
@@ -81,7 +101,7 @@ ngOnDestroy(): void {
       return this.addFood.get("category");
         }
 
-  displayProduct(foodParam:IFood |null):void{
+  displayProduct(foodParam:IFood |null |undefined):void{
 
     this.foods = foodParam;
     if(this.foods){
@@ -107,31 +127,34 @@ ngOnDestroy(): void {
     } 
   }
  
-   saveFood(originalFood:IFood | null):void{
+   saveFood(originalFood:IFood | null |undefined):void{
  
      if(this.addFood.valid){
        if(this.addFood.dirty){
-         const foods={...originalFood,...this.addFood.value};
+         const food={...originalFood,...this.addFood.value};
  
-       if(foods.id==0){
-         this.foodservice.createFood(foods).subscribe(
+       if(food.id==0){
+        this.store.dispatch(FoodActions.createFood({food}));
+        /* this.foodservice.createFood(foods).subscribe(
            (resp)=>{
              this.foodservice.changeSelectedFood(resp);
              console.log(resp);},
  
            (err)=>this.errorMessage=err
-         );
+         );*/
  
       }
       else{
+        this.store.dispatch(FoodActions.updateFood({ food}));
  
-       this.foodservice.updateFood(foods).subscribe(
+       /*this.foodservice.updateFood(food).subscribe(
         resp=>this.foodservice.changeSelectedFood(resp),
-        err=>this.errorMessage=err      ); 
+        err=>this.errorMessage=err      ); */
       }
        }
-       this.router.navigate(['food'])       
-     }   
+        
+     } 
+     this.router.navigate(['food'])       
    }
    blur():void{
    this.displayMessage=this.genericValidator.processMessages(this.addFood); 

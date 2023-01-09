@@ -4,8 +4,8 @@
 <div class="container">
   <div class="list">
       <h5>Search for product:</h5>
-        <input type="text" (keyup)="filterData(filterValue)"  [(ngModel)]="filterValue"/>
-     <button class="btn btn-info" [routerLink]="['addProduct']" (click)="newProduct()">Add Product </button> 
+        <input type="text" (keyup)='filterData(filterValue)'  [(ngModel)]="filterValue"/>
+     <button class="btn btn-info" (click)="newProduct()">Add Product </button> 
      <!--<button class="btn btn-danger">Delete Product </button>-->
     <!-- <button  class="btn btn-warning" [routerLink]="['addProduct']">Update Product </button> --> 
     

@@ -1,9 +1,25 @@
-<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Form</title>
+</head>
+<body>
+
+  <form class="container" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
     <div class="form-group"  id="main">
     
         <p>
-        <label for="id">Id</label>
-        <input class="form-control" type="number" name="id" id="id" formControlName="id">
+         <label for="id">Id</label>
+        <input class="form-control" type="number" name="id" id="id" formControlName="id"> 
+        <!-- <label for="id">Id</label><br>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter ID</mat-label>
+          <input matInput class="form-control" placeholder="Enter ID">
+      
+        </mat-form-field> -->
         </p>
         <div *ngIf="id">
         <div *ngIf="!id.valid && (id.dirty || id.touched)">
@@ -12,8 +28,15 @@
         </div>
     
         <p>
-        <label for="name">Name</label>
-        <input class="form-control" type="text" name="name" id="name" formControlName="name">
+         <label for="name">Book Name</label>
+        <input class="form-control" type="text" name="name" id="name" formControlName="name"> 
+        
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>Enter book Name</mat-label>
+          <input matInput placeholder="Enter Book Name">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          
+        </mat-form-field> -->
         </p>
         <div *ngIf="name">
         <div  *ngIf="!name.valid && (name.dirty || name.touched)">
@@ -22,16 +45,29 @@
         </div>
     
         <p>
-        <label for="issueDate">Publish Date</label>
-        <input class="form-control" type="date" name="issueDate" id="issueDate" formControlName="issueDate">
+         <label for="issueDate">Publish Date</label>
+        <input class="form-control" type="date" name="issueDate" id="issueDate" formControlName="issueDate"> 
+        <!-- <mat-form-field>
+          <input matInput [matDatepicker]="pickeryear" 
+           placeholder="Choose a date">
+          <mat-datepicker-toggle  [for]="pickeryear">
+          </mat-datepicker-toggle>
+          <mat-datepicker #pickeryear startView="year"></mat-datepicker>
+      </mat-form-field> -->
         </p>
         
     
       <div formGroupName="author">
     
         <p>
-        <label for="authorname">Author Name</label>
+         <label for="authorname">Author Name</label>
         <input class="form-control"  type="text" name="authorname" id="authorname" formControlName="authorname">
+       <!--  <mat-form-field appearance="outline">
+          <mat-label>Enter author Name</mat-label>
+          <input matInput placeholder="Enter author Name">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      
+        </mat-form-field> -->
         </p>
         <div *ngIf="authorname">
         <div *ngIf="!authorname.valid && (authorname.dirty || authorname.touched)">
@@ -40,8 +76,13 @@
         </div>
     
         <p>
-        <label for="authoremail">Email</label>
+         <label for="authoremail">Email</label>
         <input class="form-control" type="email" name="authoremail" id="authoremail" formControlName="authoremail">
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="name@example.com" formControlName="authoremail" required>
+  
+        </mat-form-field>  -->
         </p>
         <div *ngIf="authoremail">
         <div *ngIf="!authoremail.valid && (authoremail.dirty || authoremail.touched)">
@@ -75,8 +116,13 @@
       </div>
   
       <p> <button  class="btn btn-primary" type="button" (click)="addPublisher()">Add Publisher</button></p>
-      <button class="btn btn-success" type="submit" [disabled]="!bookForm.valid">Submit</button>
+      <button id="btn" class="btn btn-success" type="submit" [disabled]="!bookForm.valid">Submit</button>
       <button class="btn btn-danger" type="button" (click)="reset(bookForm)">Reset</button>
     </div>
     
 </form>
+
+  
+</body>
+</html>
+

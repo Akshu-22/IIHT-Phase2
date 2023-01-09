@@ -47,6 +47,7 @@ obsProducts$!:Observable<IProduct[]>;
    console.log(this.selectedProduct);*/
 
    this.href=this.router.url;
+   console.log(this.href);
    this.products$ = this.store.select(getProducts);
    this.products$.subscribe(resp=>this.filteredProducts=resp);
    this.errorMessage$ = this.store.select(getError);
@@ -83,7 +84,7 @@ obsProducts$!:Observable<IProduct[]>;
     // this.router.navigate(['addProduct']);
   }
 
-   productSelected(prod:IProduct){
+   productSelected(prod:IProduct):void{
     /*console.log(prod);*/
     //this.productservice.changeSelectedProduct(prod);
     this.store.dispatch(ProductActions.setCurrentProduct({currentProductId:prod.id}));
