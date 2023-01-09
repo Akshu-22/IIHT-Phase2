@@ -1,18 +1,62 @@
+
 <div class="section">
-    <h3 class="header">Events List</h3>
+   
+    <section>
+        
+        <div class="example-button-row">
+          <div class="example-flex-container">
+            <h3 class="header">Events List</h3>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+              <mat-icon>home</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </div>
+        </div>
+      </section>
 
     <div *ngIf="events.length">
         <div class="row">
-            <div *ngFor="let event of events " class="card" style="width:14rem;">
+            <div *ngFor="let event of events; let i = index " class="card" style="width:14rem;">
            
-            <div class="card-body">
-                <h6>Event Name:{{event.name}}</h6>
+            <!-- <div class="card-body">
+                <h6>Event Name:{{event.name}}</h6> 
                 <p>Event_ID:{{event.id}}</p>
                 <p>Date:{{event.date}}</p>
                 <p>Time:{{event.time}}</p>
                 <p>Price:{{event.price}}</p>
             </div>
-            <img src="{{event.imageUrl}}">
+            <img [src]='event.imageUrl'
+                      [title]="event.name"
+                      height="150px"
+                      width="200px"
+                      (mouseover)="applyAnimation($event)"
+                      (mouseout)="applyAnimation($event)"
+                      [@enlarge]="isHovering  ? 'end' : 'start'"> --><!-- src="{{event.imageUrl}}"-->
+
+                       
+                       <mat-card-header style="font-weight:bold ;">Event Name:{{event.name}}</mat-card-header><br>
+                       <mat-card-content>Event_ID:{{event.id}}</mat-card-content>
+                       <mat-card-content>Date:{{event.date}}</mat-card-content>
+                       <mat-card-content>Time:{{event.time}}</mat-card-content>
+                       <mat-card-content>Price:{{event.price}}</mat-card-content><br>
+                        <img mat-card-image [src]='event.imageUrl'
+                        [title]="event.name"
+                        height="150px"
+                        width="200px"
+                        [@enlarge]="currentState[i]"  
+                         (mouseover)="clickAnimation(i)" (mouseout)="clickAnimation(i)"><!-- (mouseover)="applyAnimation($event)"
+                            " -->
             </div>
             
         </div>
